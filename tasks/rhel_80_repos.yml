@@ -28,20 +28,20 @@
       name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
       disable_gpg_check: true
 
-  - name: enable the PS-80 main repo
-    command: percona-release setup ps-80 -y
+  - name: enable the pxc-80 main repo
+    command: percona-release setup pxc-80 -y
     when: percona_server_repository == "main"
 
-  - name: enable the PS-80 testing repo
-    command: percona-release enable-only ps-80 testing -y
+  - name: enable the pxc-80 testing repo
+    command: percona-release enable-only pxc-80 testing -y
     when: percona_server_repository == "testing"
 
   - name: enable the tools testing repo
     command: percona-release enable tools testing
     when: percona_server_repository == "testing"
 
-  - name: enable the PS-80 experimental repo
-    command: percona-release enable-only ps-80 experimental -y
+  - name: enable the pxc-80 experimental repo
+    command: percona-release enable-only pxc-80 experimental -y
     when: percona_server_repository == "experimental"
     
   - name: enable the tools testing repo

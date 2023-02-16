@@ -27,7 +27,7 @@
     yum: 
       name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
       disable_gpg_check: true
-    
+        
   - name: enable main repo
     command: percona-release enable-only original release
     when: percona_server_repository == "main"

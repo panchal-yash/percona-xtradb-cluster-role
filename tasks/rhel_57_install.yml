@@ -1,7 +1,4 @@
 ---
-  - name: Install percona server 5.7 for rhel
-    command: echo "Install Percona Server 5.7"
-
   - name: get list of enabled dnf modules on centos 8
     command: dnf module list --enabled
     register: enabled_dnf_modules
