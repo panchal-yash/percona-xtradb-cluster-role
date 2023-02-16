@@ -1,0 +1,18 @@
+---
+
+ - name: Install Percona Server 80 for Debian
+   include: debian_80.yml
+   when: ansible_os_family == "Debian" and percona_server_version == "8.0"
+
+ - name: Install Percona Server 80 for RHEL
+   include: rhel_80.yml
+   when: ansible_os_family == "RedHat" and percona_server_version == "8.0"
+
+ - name: Install Percona Server 57 for Debian
+   include: debian_57.yml
+   when: ansible_os_family == "Debian" and percona_server_version == "5.7"
+
+ - name: Install Percona Server 57 for RHEL
+   include: rhel_57.yml
+   when: ansible_os_family == "RedHat" and percona_server_version == "5.7"
+

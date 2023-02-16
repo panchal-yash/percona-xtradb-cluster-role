@@ -1,0 +1,9 @@
+
+ - name: Installing Percona MYSQL Server 5.7 for Debian Repos
+   command: echo "Installation of the Percona MYSQL Server 5.7 for Debian"
+
+ - name: Installing Percona MYSQL Server 5.7 for Debian Repos
+   include: debian_57_repos.yml
+
+ - name: Install PERCONA SERVER
+   include: debian_57_install.yml

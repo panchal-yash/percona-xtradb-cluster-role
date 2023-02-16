@@ -1,0 +1,8 @@
+ - name: Installing the Percona Server 5.7 
+   command: echo "Percona Server for MSYQL 5.7"
+
+ - name: Install the package repos
+   include: rhel_57_repos.yml
+
+ - name: Install the Packages 
+   include: rhel_57_install.yml

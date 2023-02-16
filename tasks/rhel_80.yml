@@ -1,0 +1,9 @@
+
+ - name: Installing Percona MYSQL Server 8.0 for RHEL Repos
+   command: echo "Installation of the Percona MYSQL Server 8.0 for RHEL"
+
+ - name: Installing Percona MYSQL Server 8.0 for RHEL Repos
+   include: rhel_80_repos.yml
+
+ - name: Install PERCONA SERVER 8.0
+   include: rhel_80_install.yml

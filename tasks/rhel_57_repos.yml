@@ -1,0 +1,46 @@
+  - name: remove the percona Server for mysql
+    yum: name=percona* state=absent
+    ignore_errors: True
+
+  - name: remove the Percona Server for mysql Caps
+    yum: name=Percona* state=absent
+    ignore_errors: True
+
+  - name: remove the Percona yum repositories
+    yum: name=percona-release state=absent
+
+  - name: remove saved repo files in yum
+    file: path={{ item }} state=absent
+    with_items:
+      - /etc/yum.repos.d/percona-release.repo
+      - /etc/yum.repos.d/percona-release.repo.rpmsave
+      - /etc/yum.repos.d/percona-original-release.repo
+      - /etc/yum.repos.d/percona-original-release.repo.rpmsave
+      - /etc/yum.repos.d/percona-original-testing.repo
+      - /etc/yum.repos.d/percona-original-testing.repo.rpmsave
+
+  - name: disable the mysql module on RHEL/CentOS 8
+    command: /usr/bin/dnf module disable mysql -y
+    when: ansible_distribution_major_version == "8"
+
+  - name: add the main Percona yum repos for centos
+    yum: 
+      name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+      disable_gpg_check: true
+    
+  - name: enable main repo
+    command: percona-release enable-only original release
+    when: percona_server_repository == "main"
+
+  - name: enable only testing repo
+    command: percona-release enable-only original testing
+    when: percona_server_repository == "testing"
+
+  - name: change the default repo to experimental
+    command: percona-release enable original experimental
+    when: percona_server_repository == "experimental"
+
+  - name: clean and update yum cache
+    shell: |
+      yum clean all
+      yum makecache

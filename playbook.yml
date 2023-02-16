@@ -1,0 +1,8 @@
+---
+ - name: install pxc
+   hosts: localhost
+   roles:
+    - panchal_yash.percona_xtradb_cluster_role
+   vars:
+     - percona_server_version: "VERSION"
+     - percona_server_repository: "REPOSITORY"

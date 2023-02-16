@@ -1,0 +1,9 @@
+
+ - name: Installing Percona MYSQL Server 8.0 for Debian Repos
+   command: echo "Installation of the Percona MYSQL Server 8.0 for Debian"
+
+ - name: Installing Percona MYSQL Server 8.0 for Debian Repos
+   include: debian_80_repos.yml
+
+ - name: Install PERCONA SERVER 8.0
+   include: debian_80_install.yml

@@ -1,0 +1,30 @@
+ - name: remove the percona Server and related components
+   apt: name=percona* state=absent
+   ignore_errors: True
+
+ - name: remove the Percona Server and related components Caps
+   apt: name=Percona* state=absent 
+   ignore_errors: True
+
+ - name: remove the Percona apt main repository
+   apt: name=percona-release state=absent
+
+ - name: remove the Percona apt main repository
+   apt: name=gnupg2 state=present
+
+ - name: Install percona repository package
+   apt:
+    deb: https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+
+ - name: enable main repo
+   command: percona-release enable-only original release
+   when: percona_server_repository == "main"
+
+ - name: enable only testing repo
+   command: percona-release enable-only original testing
+   when: percona_server_repository == "testing"
+
+ - name: change the default repo to experimental
+   command: percona-release enable original experimental
+   when: percona_server_repository == "experimental"
+   
