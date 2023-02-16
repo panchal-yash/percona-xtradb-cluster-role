@@ -21,6 +21,7 @@
     yum:
       name: "{{ packages }}"
       state: latest
+      update_cache: yes
     vars:
       packages:
       - Percona-XtraDB-Cluster-full-57

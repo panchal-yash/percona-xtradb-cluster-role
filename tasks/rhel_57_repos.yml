@@ -32,12 +32,24 @@
     command: percona-release enable-only original release
     when: percona_server_repository == "main"
 
+  - name: enable main repo for pxb
+    command: percona-release enable pxb-24 release
+    when: percona_server_repository == "main"
+
   - name: enable only testing repo
     command: percona-release enable-only original testing
     when: percona_server_repository == "testing"
 
+  - name: enable only testing repo for pxb
+    command: percona-release enable pxb-24 testing
+    when: percona_server_repository == "testing"
+
   - name: change the default repo to experimental
     command: percona-release enable original experimental
+    when: percona_server_repository == "experimental"
+
+  - name: change the default repo to experimental for pxb
+    command: percona-release enable pxb-24 experimental
     when: percona_server_repository == "experimental"
 
   - name: clean and update yum cache
