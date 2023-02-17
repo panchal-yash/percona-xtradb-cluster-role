@@ -9,6 +9,14 @@
  - name: remove the Percona apt main repository
    apt: name=percona-release state=absent
 
+ - name: Run the equivalent of "apt-get clean" as a separate step
+   apt:
+     autoclean: true
+ - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+   ansible.builtin.apt:
+     update_cache: yes
+     cache_valid_time: 3600
+    
  - name: remove the Percona apt main repository
    apt: name=gnupg2 state=present
 
