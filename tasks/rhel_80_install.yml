@@ -20,6 +20,7 @@
     yum:
       name: "{{ packages }}"
       state: latest
+      disable_gpg_check: true
     vars:
       packages:
       - percona-xtradb-cluster-full

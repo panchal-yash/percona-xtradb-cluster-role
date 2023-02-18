@@ -22,6 +22,7 @@
       name: "{{ packages }}"
       state: latest
       update_cache: yes
+      disable_gpg_check: true
     vars:
       packages:
       - Percona-XtraDB-Cluster-full-57
